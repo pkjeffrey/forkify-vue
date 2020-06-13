@@ -1,0 +1,57 @@
+* {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+      sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-color: #282c34;
+    color: #f0f8ff;
+}
+
+a {
+  text-decoration: none;
+}
+a:link,
+a:visited {
+  color: #61dafb;
+}
+a:hover,
+a:active {
+  color: #ff7f50;
+}
+
+.loading svg {
+  width: 50px;
+  height: 50px;
+  fill: #ff7f50;
+  transform-origin: 44% 50%;
+  animation: rotate 1.5s infinite linear;
+}
+@keyframes rotate {
+  0% {
+    transform: rotate(0); }
+  100% {
+    transform: rotate(360deg); }
+}
+
+.btn-inline {
+  border: none;
+  border-radius: 10px;
+  color: #f0f8ff;
+  background-color: #ff7f50;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+.btn-inline:focus {
+  outline: none;
+}
+.btn-inline svg {
+  width: 1.5em;
+  height: 1.5em;
+  fill: currentColor;
+}
+.btn-inline span {
+  margin: 0 .5rem;
+}
