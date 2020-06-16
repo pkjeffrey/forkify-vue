@@ -1,5 +1,5 @@
 <template>
-    <form v-on:submit.prevent="onSubmit">
+    <form @submit.prevent="onSubmit">
         <input type="text" size="25" v-model.trim="query" placeholder="Search over 1,000,000 recipes">
     </form>
 </template>
@@ -15,7 +15,7 @@ export default {
     methods: {
         onSubmit() {
             if (this.query) {
-                this.$emit("onSearch", this.query);
+                this.$emit("search", this.query);
             }
             this.query = "";
         }

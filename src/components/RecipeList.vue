@@ -4,8 +4,8 @@
             <use href="icons.svg#icon-cw"></use>
         </svg>
     </div>
-    <div v-else-if="recipes.length > 0" class="recipe-list">
-        <p v-for="recipe in recipes" :key="recipe.recipe_id">{{recipe.title}}</p>
+    <div v-else-if="some" class="recipe-list">
+        <RecipeItem v-for="recipe in recipes" :key="recipe.recipe_id" :recipe="recipe" @select="$emit('recipeSelected', $event)" />
     </div>
     <div v-else class="recipe-list">
         <p>No recipes found.</p>
@@ -14,21 +14,20 @@
 
 <script>
 import axios from "axios";
+import RecipeItem from "./RecipeItem";
 
 export default {
     name: "RecipeList",
-    props: [
-        "search"
-    ],
+    components: {RecipeItem},
+    props: ["search"],
     data() {
         return {
             recipes: null
         }
     },
     computed: {
-        loading() {
-            return this.search && !this.recipes;
-        }
+        loading() {return this.search && !this.recipes},
+        some() {return this.recipes && this.recipes.length > 0}
     },
     mounted() {
         if (this.search) {

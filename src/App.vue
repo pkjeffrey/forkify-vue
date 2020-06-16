@@ -3,9 +3,9 @@
     <header class="App-header">
       <img src="favicon.png" alt="logo" title="Forkify in Vue">
       <h1>Forkify in Vue</h1>
-      <Search v-on:onSearch="onSearch" />
+      <Search @search="onSearch" />
     </header>
-    <RecipeList :key="search" v-bind:search="search" />
+    <RecipeList :key="search" :search="search" @recipeSelected="onRecipeSelected" />
   </div>
 </template>
 
@@ -21,12 +21,16 @@ export default {
   },
   data() {
     return {
-      search: null
+      search: null,
+      selectRecipe: null
     };
   },
   methods: {
     onSearch(query) {
       this.search = query;
+    },
+    onRecipeSelected(id) {
+      this.selectRecipe = id;
     }
   }
 }
@@ -51,5 +55,10 @@ export default {
 }
 .App-header input {
   font-size: 1.2rem;
+}
+.recipe-list {
+  width: 30%;
+  float: left;
+  overflow: hidden;
 }
 </style>
